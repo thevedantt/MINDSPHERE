@@ -22,7 +22,7 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
     <motion.div
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 bg-[#1a1a1a] border-t border-[#A7C4B5]/10 backdrop-blur-md z-50"
+      className="fixed bottom-0 left-0 right-0 bg-neutral-50 border-t border-primary-200 backdrop-blur-md z-50"
     >
       <div className="flex justify-around items-center py-2 max-w-md mx-auto">
         {navItems.map((item) => {
@@ -35,19 +35,19 @@ export default function BottomNav({ currentScreen, onNavigate }: BottomNavProps)
               whileTap={{ scale: 0.9 }}
               className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all relative ${
                 isActive
-                  ? 'text-[#FFB38E]'
-                  : 'text-[#C7D9E7] hover:text-[#A7C4B5]'
+                  ? 'text-secondary-600'
+                  : 'text-neutral-600 hover:text-primary-600'
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-[#A7C4B5]/20 to-[#CAB8FF]/20 rounded-xl"
+                  className="absolute inset-0 bg-primary-100 rounded-xl"
                   transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <Icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-[#FFB38E]' : ''}`} />
-              <span className={`text-xs font-medium relative z-10 ${isActive ? 'text-[#FFB38E]' : ''}`}>
+              <Icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-secondary-600' : ''}`} />
+              <span className={`text-xs font-medium relative z-10 ${isActive ? 'text-secondary-600' : ''}`}>
                 {item.label}
               </span>
             </motion.button>

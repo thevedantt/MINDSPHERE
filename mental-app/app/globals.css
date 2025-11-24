@@ -1,55 +1,89 @@
 @import "tailwindcss";
+@import "../styles/theme.css";
 
 :root {
-  --background: #000000;
-  --foreground: #F6F5F3;
-  --primary: #A7C4B5;
-  --secondary: #CAB8FF;
-  --accent: #FFB38E;
-  --neutral: #F6F5F3;
-  --text-dark: #2B2B2B;
-  --icon-color: #C7D9E7;
-  --card-bg: #1a1a1a;
-  --card-border: rgba(167, 196, 181, 0.1);
+  --background: var(--background-base);
+  --foreground: var(--neutral-900);
+  --primary: var(--primary-500);
+  --secondary: var(--secondary-500);
+  --accent: var(--secondary-500);
+  --neutral: var(--neutral-50);
+  --text-dark: var(--neutral-900);
+  --icon-color: var(--neutral-600);
+  --card-bg: var(--neutral-50);
+  --card-border: var(--neutral-200);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--background-base);
+  --color-foreground: var(--neutral-900);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Primary Colors */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  
+  /* Secondary Colors */
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-500: var(--secondary-500);
+  --color-secondary-600: var(--secondary-600);
+  --color-secondary-700: var(--secondary-700);
+  
+  /* Neutral Colors */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  
+  /* Semantic Colors */
+  --color-success-50: var(--success-50);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  
+  --color-warning-50: var(--warning-50);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  
+  --color-danger-50: var(--danger-50);
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
 }
 
 body {
-  background: #000000;
+  background: var(--background-base);
   background-attachment: fixed;
-  color: var(--foreground);
+  color: var(--neutral-900);
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
 }
 
-.gradient-hero {
-  background: linear-gradient(135deg, #A7C4B5 0%, #CAB8FF 100%);
-}
 
-.gradient-card {
-  background: linear-gradient(135deg, rgba(167, 196, 181, 0.1) 0%, rgba(202, 184, 255, 0.1) 100%);
-}
-
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar for light theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--neutral-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #A7C4B5;
+  background: var(--primary-500);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #CAB8FF;
+  background: var(--secondary-500);
 }

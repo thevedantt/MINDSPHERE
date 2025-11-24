@@ -6,7 +6,6 @@ import { Send, Mic, Sparkles, Headphones, Shield, Smile, AlertCircle } from 'luc
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import { AnimatedGradient } from '@/components/ui/animated-gradient';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface Message {
@@ -65,22 +64,22 @@ export default function AIChat() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-black pb-20">
+    <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
       {/* Header */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+        className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
       >
         <div className="flex items-center gap-2">
-          <div className="p-2 bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] rounded-full">
-            <Sparkles className="w-5 h-5 text-[#2B2B2B]" />
+          <div className="p-2 bg-primary-500 rounded-full">
+            <Sparkles className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-[#F6F5F3]">{t('chat.title')}</h1>
+            <h1 className="text-xl font-semibold text-neutral-900">{t('chat.title')}</h1>
             <div className="flex items-center gap-1 mt-0.5">
-              <Shield className="w-3 h-3 text-[#A7C4B5]" />
-              <p className="text-xs text-[#C7D9E7]">{t('chat.safety')}</p>
+              <Shield className="w-3 h-3 text-primary-600" />
+              <p className="text-xs text-neutral-600">{t('chat.safety')}</p>
             </div>
           </div>
         </div>
@@ -100,12 +99,12 @@ export default function AIChat() {
               <div
                 className={`max-w-[75%] rounded-2xl px-4 py-3 shadow-lg ${
                   msg.sender === 'user'
-                    ? 'bg-gradient-to-br from-[#FFB38E] to-[#FF9D6E] text-[#2B2B2B] rounded-tr-sm'
-                    : 'bg-[#1a1a1a] border border-[#A7C4B5]/20 text-[#F6F5F3] rounded-tl-sm'
+                    ? 'bg-secondary-500 text-white rounded-tr-sm'
+                    : 'bg-neutral-50 border border-primary-200 text-neutral-900 rounded-tl-sm'
                 }`}
               >
                 <p className="text-sm leading-relaxed">{msg.text}</p>
-                <p className={`text-xs mt-1.5 text-right ${msg.sender === 'user' ? 'text-[#2B2B2B]/70' : 'text-[#C7D9E7]'}`}>
+                <p className={`text-xs mt-1.5 text-right ${msg.sender === 'user' ? 'text-white/70' : 'text-neutral-600'}`}>
                   {msg.timestamp}
                 </p>
               </div>
@@ -118,7 +117,7 @@ export default function AIChat() {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="px-4 py-2 bg-[#1a1a1a] border-t border-[#A7C4B5]/10"
+        className="px-4 py-2 bg-neutral-50 border-t border-primary-200"
       >
         <div className="flex gap-2 mb-2">
           <Button
@@ -126,7 +125,7 @@ export default function AIChat() {
             size="sm"
             className="flex-1 gap-2"
           >
-            <Sparkles className="w-4 h-4 text-[#A7C4B5]" />
+            <Sparkles className="w-4 h-4 text-primary-600" />
             <span className="text-xs">{t('chat.breathing')}</span>
           </Button>
           <Button
@@ -134,7 +133,7 @@ export default function AIChat() {
             size="sm"
             className="flex-1 gap-2"
           >
-            <Headphones className="w-4 h-4 text-[#CAB8FF]" />
+            <Headphones className="w-4 h-4 text-secondary-600" />
             <span className="text-xs">{t('chat.mindfulness')}</span>
           </Button>
         </div>
@@ -144,7 +143,7 @@ export default function AIChat() {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-[#1a1a1a] border-t border-[#A7C4B5]/10 px-4 py-3 rounded-t-3xl"
+        className="bg-neutral-50 border-t border-primary-200 px-4 py-3 rounded-t-3xl"
       >
         <AnimatePresence>
           {showMoodPicker && (
@@ -152,7 +151,7 @@ export default function AIChat() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="flex gap-2 mb-3 pb-3 border-b border-[#A7C4B5]/20 overflow-hidden"
+              className="flex gap-2 mb-3 pb-3 border-b border-primary-200 overflow-hidden"
             >
               {moods.map((mood, idx) => (
                 <motion.button
@@ -163,7 +162,7 @@ export default function AIChat() {
                     setShowMoodPicker(false);
                     setInputText(mood.emoji + ' ');
                   }}
-                  className="text-2xl hover:scale-110 transition-transform p-2 rounded-full hover:bg-[#252525]"
+                  className="text-2xl hover:scale-110 transition-transform p-2 rounded-full hover:bg-neutral-100"
                   title={mood.label}
                 >
                   {mood.emoji}
@@ -178,7 +177,7 @@ export default function AIChat() {
             size="icon"
             onClick={() => setShowMoodPicker(!showMoodPicker)}
           >
-            <Smile className="w-5 h-5 text-[#CAB8FF]" />
+            <Smile className="w-5 h-5 text-secondary-600" />
           </Button>
           <Input
             type="text"
@@ -205,8 +204,8 @@ export default function AIChat() {
           </motion.div>
         </div>
         <div className="flex items-center justify-center gap-1 mt-2">
-          <AlertCircle className="w-3 h-3 text-[#C7D9E7]" />
-          <p className="text-xs text-[#C7D9E7]">
+          <AlertCircle className="w-3 h-3 text-neutral-600" />
+          <p className="text-xs text-neutral-600">
             {t('chat.emergency')}
           </p>
         </div>

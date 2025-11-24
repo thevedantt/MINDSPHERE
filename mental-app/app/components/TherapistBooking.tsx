@@ -6,7 +6,6 @@ import { ArrowLeft, Star, Calendar, IndianRupee, Filter, User, Languages, Award,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AnimatedGradient } from '@/components/ui/animated-gradient';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface Therapist {
@@ -105,11 +104,11 @@ export default function TherapistBooking() {
 
   if (selectedTherapist) {
     return (
-      <div className="flex flex-col h-screen bg-black pb-20">
+      <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+          className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
         >
           <Button
             variant="ghost"
@@ -119,65 +118,61 @@ export default function TherapistBooking() {
           >
             <ArrowLeft className="w-5 h-5" />
           </Button>
-          <h1 className="text-xl font-semibold text-[#F6F5F3]">{selectedTherapist.name}</h1>
+          <h1 className="text-xl font-semibold text-neutral-900">{selectedTherapist.name}</h1>
         </motion.div>
         <div className="flex-1 overflow-y-auto px-4 py-4">
-          <AnimatedGradient>
-            <Card className="mb-4">
-              <CardContent className="pt-6">
-                <div className="text-6xl mb-4 text-center">{selectedTherapist.photo}</div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <Languages className="w-4 h-4 text-[#A7C4B5]" />
-                    <p className="text-[#F6F5F3]"><strong className="text-[#CAB8FF]">{t('therapist.languages')}:</strong> {selectedTherapist.languages.join(', ')}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#A7C4B5]" />
-                    <p className="text-[#F6F5F3]"><strong className="text-[#CAB8FF]">{t('therapist.experience')}:</strong> {selectedTherapist.experience} {t('therapist.years')}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-[#A7C4B5]" />
-                    <p className="text-[#F6F5F3]"><strong className="text-[#CAB8FF]">{t('therapist.specialty')}:</strong> {selectedTherapist.specialty.join(', ')}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    <p className="text-[#F6F5F3]"><strong className="text-[#CAB8FF]">{t('therapist.rating')}:</strong> {selectedTherapist.rating}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <IndianRupee className="w-4 h-4 text-[#FFB38E]" />
-                    <p className="text-[#F6F5F3]"><strong className="text-[#CAB8FF]">{t('therapist.price')}:</strong> ₹{selectedTherapist.price}/{t('therapist.session')}</p>
-                  </div>
+          <Card className="mb-4">
+            <CardContent className="pt-6">
+              <div className="text-6xl mb-4 text-center">{selectedTherapist.photo}</div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Languages className="w-4 h-4 text-primary-600" />
+                  <p className="text-neutral-900"><strong className="text-secondary-600">{t('therapist.languages')}:</strong> {selectedTherapist.languages.join(', ')}</p>
                 </div>
-              </CardContent>
-            </Card>
-          </AnimatedGradient>
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-primary-600" />
+                  <p className="text-neutral-900"><strong className="text-secondary-600">{t('therapist.experience')}:</strong> {selectedTherapist.experience} {t('therapist.years')}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4 text-primary-600" />
+                  <p className="text-neutral-900"><strong className="text-secondary-600">{t('therapist.specialty')}:</strong> {selectedTherapist.specialty.join(', ')}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-warning-500 fill-warning-500" />
+                  <p className="text-neutral-900"><strong className="text-secondary-600">{t('therapist.rating')}:</strong> {selectedTherapist.rating}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IndianRupee className="w-4 h-4 text-secondary-600" />
+                  <p className="text-neutral-900"><strong className="text-secondary-600">{t('therapist.price')}:</strong> ₹{selectedTherapist.price}/{t('therapist.session')}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
           
-          <AnimatedGradient>
-            <Card className="mb-4">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#F6F5F3]">
-                  <Calendar className="w-5 h-5 text-[#A7C4B5]" />
-                  {t('therapist.available')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-3 gap-2">
-                  {['10:00 AM', '2:00 PM', '4:00 PM', '6:00 PM', '8:00 PM'].map((time) => (
-                    <motion.div
-                      key={time}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button variant="outline" className="w-full">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {time}
-                      </Button>
-                    </motion.div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </AnimatedGradient>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-neutral-900">
+                <Calendar className="w-5 h-5 text-primary-600" />
+                {t('therapist.available')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-3 gap-2">
+                {['10:00 AM', '2:00 PM', '4:00 PM', '6:00 PM', '8:00 PM'].map((time) => (
+                  <motion.div
+                    key={time}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button variant="outline" className="w-full">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {time}
+                    </Button>
+                  </motion.div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
           
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button className="w-full" size="lg">
@@ -191,25 +186,25 @@ export default function TherapistBooking() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-black pb-20">
+    <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+        className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
       >
-        <h1 className="text-xl font-semibold text-[#F6F5F3]">{t('therapist.title')}</h1>
+        <h1 className="text-xl font-semibold text-neutral-900">{t('therapist.title')}</h1>
       </motion.div>
 
-      <div className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3">
+      <div className="bg-neutral-50 border-b border-primary-200 px-4 py-3">
         <div className="flex items-center gap-2 mb-2">
-          <Filter className="w-4 h-4 text-[#A7C4B5]" />
-          <span className="text-sm font-medium text-[#F6F5F3]">{t('therapist.filters')}</span>
+          <Filter className="w-4 h-4 text-primary-600" />
+          <span className="text-sm font-medium text-neutral-900">{t('therapist.filters')}</span>
         </div>
         <div className="flex gap-2 overflow-x-auto pb-2">
           <select
             value={filters.price}
             onChange={(e) => setFilters({ ...filters, price: e.target.value })}
-            className="bg-[#252525] border border-[#A7C4B5]/20 rounded-full px-4 py-2 text-sm text-[#F6F5F3] focus:outline-none focus:ring-2 focus:ring-[#A7C4B5]"
+            className="bg-neutral-100 border border-primary-200 rounded-full px-4 py-2 text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <option value="all">{t('therapist.allPrice')}</option>
             <option value="0-500">₹0-500</option>
@@ -220,7 +215,7 @@ export default function TherapistBooking() {
           <select
             value={filters.gender}
             onChange={(e) => setFilters({ ...filters, gender: e.target.value })}
-            className="bg-[#252525] border border-[#A7C4B5]/20 rounded-full px-4 py-2 text-sm text-[#F6F5F3] focus:outline-none focus:ring-2 focus:ring-[#A7C4B5]"
+            className="bg-neutral-100 border border-primary-200 rounded-full px-4 py-2 text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <option value="all">{t('therapist.allGender')}</option>
             <option value="Male">{t('therapist.male')}</option>
@@ -230,7 +225,7 @@ export default function TherapistBooking() {
           <select
             value={filters.specialty}
             onChange={(e) => setFilters({ ...filters, specialty: e.target.value })}
-            className="bg-[#252525] border border-[#A7C4B5]/20 rounded-full px-4 py-2 text-sm text-[#F6F5F3] focus:outline-none focus:ring-2 focus:ring-[#A7C4B5]"
+            className="bg-neutral-100 border border-primary-200 rounded-full px-4 py-2 text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <option value="all">{t('therapist.allSpecialty')}</option>
             {specialties.map((s) => (
@@ -251,46 +246,44 @@ export default function TherapistBooking() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <AnimatedGradient>
-                <Card
-                  onClick={() => setSelectedTherapist(therapist)}
-                  className="cursor-pointer hover:border-[#A7C4B5]/30 transition-all"
-                >
-                  <CardContent className="pt-6">
-                    <div className="flex gap-4">
-                      <div className="text-5xl">{therapist.photo}</div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-[#F6F5F3] mb-1">{therapist.name}</h3>
-                        <div className="flex flex-wrap gap-1 mb-2">
-                          {therapist.specialty.map((spec) => (
-                            <Badge key={spec} variant="secondary" className="text-xs">
-                              {spec}
-                            </Badge>
-                          ))}
+              <Card
+                onClick={() => setSelectedTherapist(therapist)}
+                className="cursor-pointer hover:border-primary-300 transition-all"
+              >
+                <CardContent className="pt-6">
+                  <div className="flex gap-4">
+                    <div className="text-5xl">{therapist.photo}</div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-neutral-900 mb-1">{therapist.name}</h3>
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {therapist.specialty.map((spec) => (
+                          <Badge key={spec} variant="secondary" className="text-xs">
+                            {spec}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-1 mb-2">
+                        <Languages className="w-3 h-3 text-neutral-600" />
+                        <p className="text-sm text-neutral-600">{therapist.languages.join(', ')}</p>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-warning-500 fill-warning-500" />
+                          <span className="text-sm font-medium text-neutral-900">{therapist.rating}</span>
                         </div>
-                        <div className="flex items-center gap-1 mb-2">
-                          <Languages className="w-3 h-3 text-[#C7D9E7]" />
-                          <p className="text-sm text-[#C7D9E7]">{therapist.languages.join(', ')}</p>
+                        <div className="flex items-center gap-1">
+                          <Award className="w-4 h-4 text-primary-600" />
+                          <span className="text-sm text-neutral-600">{therapist.experience} {t('therapist.years')}</span>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                            <span className="text-sm font-medium text-[#F6F5F3]">{therapist.rating}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Award className="w-4 h-4 text-[#A7C4B5]" />
-                            <span className="text-sm text-[#C7D9E7]">{therapist.experience} {t('therapist.years')}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <IndianRupee className="w-4 h-4 text-[#FFB38E]" />
-                            <span className="text-lg font-bold text-[#FFB38E]">₹{therapist.price}</span>
-                          </div>
+                        <div className="flex items-center gap-1">
+                          <IndianRupee className="w-4 h-4 text-secondary-600" />
+                          <span className="text-lg font-bold text-secondary-600">₹{therapist.price}</span>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </AnimatedGradient>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </AnimatePresence>

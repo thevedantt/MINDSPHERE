@@ -6,7 +6,6 @@ import { Trophy, Coins, Gift, Brain, Footprints, Heart, Sparkles, TrendingUp, Ch
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AnimatedGradient } from '@/components/ui/animated-gradient';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface Task {
@@ -57,28 +56,27 @@ export default function GamificationDashboard() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-black pb-20">
+    <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+        className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
       >
         <div className="flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-[#FFB38E]" />
-          <h1 className="text-xl font-semibold text-[#F6F5F3]">{t('dashboard.title')}</h1>
+          <Trophy className="w-5 h-5 text-secondary-600" />
+          <h1 className="text-xl font-semibold text-neutral-900">{t('dashboard.title')}</h1>
         </div>
       </motion.div>
 
       <div className="px-4 py-4">
-        <AnimatedGradient>
-          <Card>
-            <CardContent className="pt-6">
+        <Card>
+          <CardContent className="pt-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <p className="text-sm text-[#C7D9E7]">{t('dashboard.profile')}</p>
-                      <p className="text-2xl font-bold text-[#F6F5F3]">User</p>
+                      <p className="text-sm text-neutral-600">{t('dashboard.profile')}</p>
+                      <p className="text-2xl font-bold text-neutral-900">User</p>
                     </div>
                     {/* Language Toggle Button */}
                     <motion.div
@@ -89,8 +87,8 @@ export default function GamificationDashboard() {
                         onClick={toggleLanguage}
                         className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                           language === 'hi'
-                            ? 'bg-gradient-to-r from-[#FFB38E] to-[#FF9D6E] text-[#2B2B2B] shadow-lg'
-                            : 'bg-[#1a1a1a] border border-[#A7C4B5]/30 text-[#A7C4B5] hover:border-[#A7C4B5]/50 hover:bg-[#252525]'
+                            ? 'bg-secondary-500 text-white shadow-lg'
+                            : 'bg-neutral-50 border border-primary-300 text-primary-600 hover:border-primary-400 hover:bg-neutral-100'
                         }`}
                         animate={{
                           scale: language === 'hi' ? [1, 1.05, 1] : 1,
@@ -122,32 +120,32 @@ export default function GamificationDashboard() {
                   className="text-center"
                 >
                   <div className="text-4xl mb-1">🔥</div>
-                  <p className="text-sm font-semibold text-[#F6F5F3]">{streak} {t('dashboard.streak')}</p>
-                  <p className="text-xs text-[#C7D9E7]">{t('dashboard.streakLabel')}</p>
+                  <p className="text-sm font-semibold text-neutral-900">{streak} {t('dashboard.streak')}</p>
+                  <p className="text-xs text-neutral-600">{t('dashboard.streakLabel')}</p>
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   className="text-center"
                 >
-                  <div className="bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] rounded-full w-16 h-16 flex items-center justify-center shadow-lg relative">
-                    <Trophy className="w-6 h-6 text-[#2B2B2B]" />
-                    <span className="absolute text-xs font-bold text-[#2B2B2B] bottom-1">L{level}</span>
+                  <div className="bg-primary-500 rounded-full w-16 h-16 flex items-center justify-center shadow-lg relative">
+                    <Trophy className="w-6 h-6 text-white" />
+                    <span className="absolute text-xs font-bold text-white bottom-1">L{level}</span>
                   </div>
-                  <p className="text-xs text-[#C7D9E7] mt-1">{t('dashboard.level')}</p>
+                  <p className="text-xs text-neutral-600 mt-1">{t('dashboard.level')}</p>
                 </motion.div>
               </div>
               
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="font-semibold text-[#F6F5F3] flex items-center gap-1">
-                    <Sparkles className="w-4 h-4 text-[#A7C4B5]" />
+                  <span className="font-semibold text-neutral-900 flex items-center gap-1">
+                    <Sparkles className="w-4 h-4 text-primary-600" />
                     {t('dashboard.level')} {level}: {t('dashboard.levelName')}
                   </span>
-                  <span className="text-[#C7D9E7]">{xp}/{xpNeeded} XP</span>
+                  <span className="text-neutral-600">{xp}/{xpNeeded} XP</span>
                 </div>
-                <div className="w-full bg-[#252525] rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-neutral-200 rounded-full h-3 overflow-hidden">
                   <motion.div
-                    className="bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] h-3 rounded-full"
+                    className="bg-primary-500 h-3 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: `${(xp / xpNeeded) * 100}%` }}
                     transition={{ duration: 0.5 }}
@@ -157,23 +155,22 @@ export default function GamificationDashboard() {
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] rounded-2xl p-4 text-center"
+                className="bg-primary-500 rounded-2xl p-4 text-center"
               >
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <Coins className="w-5 h-5 text-[#2B2B2B]" />
-                  <p className="text-sm text-[#2B2B2B]/90 font-semibold">{t('dashboard.coins')}</p>
+                  <Coins className="w-5 h-5 text-white" />
+                  <p className="text-sm text-white/90 font-semibold">{t('dashboard.coins')}</p>
                 </div>
-                <p className="text-3xl font-bold text-[#2B2B2B]">{coins} MHC</p>
-                <p className="text-xs text-[#2B2B2B]/80 mt-1">{t('dashboard.earned')} {coins} {t('dashboard.today')}</p>
+                <p className="text-3xl font-bold text-white">{coins} MHC</p>
+                <p className="text-xs text-white/80 mt-1">{t('dashboard.earned')} {coins} {t('dashboard.today')}</p>
               </motion.div>
             </CardContent>
           </Card>
-        </AnimatedGradient>
       </div>
 
       <div className="px-4 pb-2">
-        <h2 className="text-lg font-semibold text-[#F6F5F3] mb-3 flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-[#A7C4B5]" />
+        <h2 className="text-lg font-semibold text-neutral-900 mb-3 flex items-center gap-2">
+          <CheckCircle2 className="w-5 h-5 text-primary-600" />
           {t('dashboard.tasks')}
         </h2>
         <div className="space-y-2">
@@ -185,24 +182,23 @@ export default function GamificationDashboard() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <AnimatedGradient>
-                <Card className={task.completed ? 'opacity-60' : ''}>
-                  <CardContent className="pt-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] rounded-full">
-                          <div className="text-[#2B2B2B]">{task.icon}</div>
-                        </div>
+              <Card className={task.completed ? 'opacity-60' : ''}>
+                <CardContent className="pt-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-primary-500 rounded-full">
+                        <div className="text-white">{task.icon}</div>
+                      </div>
                         <div>
-                          <p className="font-medium text-[#F6F5F3]">{task.title}</p>
+                          <p className="font-medium text-neutral-900">{task.title}</p>
                           <div className="flex items-center gap-1">
-                            <Coins className="w-3 h-3 text-[#FFB38E]" />
-                            <p className="text-xs text-[#C7D9E7]">+{task.xp} XP</p>
+                            <Coins className="w-3 h-3 text-secondary-600" />
+                            <p className="text-xs text-neutral-600">+{task.xp} XP</p>
                           </div>
                         </div>
                       </div>
                       {task.completed ? (
-                        <CheckCircle2 className="w-6 h-6 text-[#A7C4B5]" />
+                        <CheckCircle2 className="w-6 h-6 text-primary-600" />
                       ) : (
                         <Button
                           onClick={() => handleTaskComplete(task.id)}
@@ -214,15 +210,14 @@ export default function GamificationDashboard() {
                     </div>
                   </CardContent>
                 </Card>
-              </AnimatedGradient>
             </motion.div>
           ))}
         </div>
       </div>
 
       <div className="px-4 py-4 flex-1 overflow-y-auto">
-        <h2 className="text-lg font-semibold text-[#F6F5F3] mb-3 flex items-center gap-2">
-          <Gift className="w-5 h-5 text-[#CAB8FF]" />
+        <h2 className="text-lg font-semibold text-neutral-900 mb-3 flex items-center gap-2">
+          <Gift className="w-5 h-5 text-secondary-600" />
           {t('dashboard.rewards')}
         </h2>
         <div className="grid grid-cols-2 gap-3">
@@ -235,18 +230,17 @@ export default function GamificationDashboard() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <AnimatedGradient>
-                <Card>
-                  <CardContent className="pt-6">
-                    <div className="text-center mb-3">
-                      <div className="inline-block p-3 bg-gradient-to-r from-[#A7C4B5] to-[#CAB8FF] rounded-full mb-2">
-                        <div className="text-[#2B2B2B]">{reward.icon}</div>
-                      </div>
-                      <p className="text-sm font-medium text-[#F6F5F3] mb-2">{reward.name}</p>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="text-center mb-3">
+                    <div className="inline-block p-3 bg-primary-500 rounded-full mb-2">
+                      <div className="text-white">{reward.icon}</div>
+                    </div>
+                      <p className="text-sm font-medium text-neutral-900 mb-2">{reward.name}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1">
-                          <Coins className="w-4 h-4 text-[#FFB38E]" />
-                          <p className="text-xs text-[#C7D9E7]">{reward.cost} MHC</p>
+                          <Coins className="w-4 h-4 text-secondary-600" />
+                          <p className="text-xs text-neutral-600">{reward.cost} MHC</p>
                         </div>
                         <Button
                           size="sm"
@@ -260,7 +254,6 @@ export default function GamificationDashboard() {
                     </div>
                   </CardContent>
                 </Card>
-              </AnimatedGradient>
             </motion.div>
           ))}
         </div>

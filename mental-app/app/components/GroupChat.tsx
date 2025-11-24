@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AnimatedGradient } from '@/components/ui/animated-gradient';
 
 interface Group {
   id: number;
@@ -95,11 +94,11 @@ export default function GroupChat() {
 
   if (selectedGroup) {
     return (
-      <div className="flex flex-col h-screen bg-black pb-20">
+      <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+          className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
         >
           <Button
             variant="ghost"
@@ -110,14 +109,14 @@ export default function GroupChat() {
             <ArrowLeft className="w-5 h-5" />
           </Button>
           <div className="flex items-center gap-2">
-            <MessageCircle className="w-5 h-5 text-[#A7C4B5]" />
+            <MessageCircle className="w-5 h-5 text-primary-600" />
             <div>
-              <h1 className="text-xl font-semibold text-[#F6F5F3]">{selectedGroup.name}</h1>
+              <h1 className="text-xl font-semibold text-neutral-900">{selectedGroup.name}</h1>
               <div className="flex items-center gap-2 mt-0.5">
-                <Users className="w-3 h-3 text-[#C7D9E7]" />
-                <p className="text-xs text-[#C7D9E7]">{selectedGroup.members} सदस्य</p>
-                <Shield className="w-3 h-3 text-[#A7C4B5]" />
-                <p className="text-xs text-[#C7D9E7]">AI मॉडरेशन सक्रिय</p>
+                <Users className="w-3 h-3 text-neutral-600" />
+                <p className="text-xs text-neutral-600">{selectedGroup.members} सदस्य</p>
+                <Shield className="w-3 h-3 text-primary-600" />
+                <p className="text-xs text-neutral-600">AI मॉडरेशन सक्रिय</p>
               </div>
             </div>
           </div>
@@ -134,18 +133,18 @@ export default function GroupChat() {
                 className="flex flex-col"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <Lock className="w-3 h-3 text-[#C7D9E7]" />
-                  <p className="text-xs text-[#C7D9E7] font-medium">{msg.sender}</p>
+                  <Lock className="w-3 h-3 text-neutral-600" />
+                  <p className="text-xs text-neutral-600 font-medium">{msg.sender}</p>
                 </div>
                 <div
                   className={`max-w-[75%] rounded-2xl px-4 py-3 shadow-lg ${
                     msg.sender === userIdentity
-                      ? 'bg-gradient-to-br from-[#FFB38E] to-[#FF9D6E] text-[#2B2B2B] rounded-tr-sm self-end ml-auto'
-                      : 'bg-[#1a1a1a] border border-[#A7C4B5]/20 text-[#F6F5F3] rounded-tl-sm'
+                      ? 'bg-secondary-500 text-white rounded-tr-sm self-end ml-auto'
+                      : 'bg-neutral-50 border border-primary-200 text-neutral-900 rounded-tl-sm'
                   }`}
                 >
                   <p className="text-sm leading-relaxed">{msg.text}</p>
-                  <p className={`text-xs mt-1.5 text-right ${msg.sender === userIdentity ? 'text-[#2B2B2B]/70' : 'text-[#C7D9E7]'}`}>
+                  <p className={`text-xs mt-1.5 text-right ${msg.sender === userIdentity ? 'text-white/70' : 'text-neutral-600'}`}>
                     {msg.timestamp}
                   </p>
                 </div>
@@ -157,7 +156,7 @@ export default function GroupChat() {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-[#1a1a1a] border-t border-[#A7C4B5]/10 px-4 py-3 rounded-t-3xl"
+          className="bg-neutral-50 border-t border-primary-200 px-4 py-3 rounded-t-3xl"
         >
           <div className="flex gap-2 items-center">
             <Input
@@ -177,8 +176,8 @@ export default function GroupChat() {
             </Button>
           </div>
           <div className="flex items-center justify-center gap-1 mt-2">
-            <Lock className="w-3 h-3 text-[#C7D9E7]" />
-            <p className="text-xs text-[#C7D9E7]">
+            <Lock className="w-3 h-3 text-neutral-600" />
+            <p className="text-xs text-neutral-600">
               आपकी पहचान: {userIdentity} (गोपनीय)
             </p>
           </div>
@@ -188,17 +187,17 @@ export default function GroupChat() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-black pb-20">
+    <div className="flex flex-col h-screen bg-[var(--background-base)] pb-20">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-[#1a1a1a] border-b border-[#A7C4B5]/10 px-4 py-3 rounded-b-3xl"
+        className="bg-neutral-50 border-b border-primary-200 px-4 py-3 rounded-b-3xl"
       >
         <div className="flex items-center gap-2">
-          <Users className="w-5 h-5 text-[#A7C4B5]" />
+          <Users className="w-5 h-5 text-primary-600" />
           <div>
-            <h1 className="text-xl font-semibold text-[#F6F5F3]">गुमनाम समूह चैट</h1>
-            <p className="text-xs text-[#C7D9E7] mt-0.5">सुरक्षित समुदाय सहायता</p>
+            <h1 className="text-xl font-semibold text-neutral-900">गुमनाम समूह चैट</h1>
+            <p className="text-xs text-neutral-600 mt-0.5">सुरक्षित समुदाय सहायता</p>
           </div>
         </div>
       </motion.div>
@@ -214,28 +213,26 @@ export default function GroupChat() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <AnimatedGradient>
-                <Card
-                  onClick={() => setSelectedGroup(group)}
-                  className="cursor-pointer hover:border-[#A7C4B5]/30 transition-all"
-                >
-                  <CardContent className="pt-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-[#F6F5F3] mb-1">{group.name}</h3>
-                        <div className="flex items-center gap-2">
-                          <Users className="w-4 h-4 text-[#A7C4B5]" />
-                          <Badge variant="secondary" className="text-xs">
-                            {group.members} सदस्य
-                          </Badge>
-                        </div>
+              <Card
+                onClick={() => setSelectedGroup(group)}
+                className="cursor-pointer hover:border-primary-300 transition-all"
+              >
+                <CardContent className="pt-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-neutral-900 mb-1">{group.name}</h3>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-primary-600" />
+                        <Badge variant="secondary" className="text-xs">
+                          {group.members} सदस्य
+                        </Badge>
                       </div>
                     </div>
-                    <p className="text-sm text-[#C7D9E7] mb-2 mt-3">{group.lastMessage}</p>
-                    <p className="text-xs text-[#C7D9E7]/70">{group.lastMessageTime}</p>
-                  </CardContent>
-                </Card>
-              </AnimatedGradient>
+                  </div>
+                  <p className="text-sm text-neutral-600 mb-2 mt-3">{group.lastMessage}</p>
+                  <p className="text-xs text-neutral-500">{group.lastMessageTime}</p>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </AnimatePresence>

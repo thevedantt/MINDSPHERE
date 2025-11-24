@@ -39,7 +39,7 @@ export default function Home() {
   // Hero Section
   if (appState === 'hero') {
     return (
-      <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-black">
+      <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-[var(--background-base)]">
         <HeroSection onGetStarted={() => setAppState('login')} />
       </div>
     );
@@ -48,7 +48,7 @@ export default function Home() {
   // Login Page
   if (appState === 'login') {
     return (
-      <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-black">
+      <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-[var(--background-base)]">
         <LoginPage
           onBack={() => setAppState('hero')}
           onLogin={() => setAppState('app')}
@@ -59,7 +59,7 @@ export default function Home() {
 
   // Main App
   return (
-    <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-black">
+    <div className="relative max-w-md mx-auto h-screen overflow-hidden bg-[var(--background-base)]">
       <div className="h-full overflow-hidden">
         {renderScreen()}
       </div>
