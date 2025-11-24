@@ -44,5 +44,11 @@
   --danger-50: #FEF2F2;
   --danger-500: #DC2626;
   --danger-600: #B91C1C;
+
+  /* Violet Gradient Colors for Gamification */
+  --violet-500: #7A3CFF;
+  --violet-600: #A45CFF;
+  --violet-700: #C07CFF;
+  --violet-gradient: linear-gradient(180deg, #7A3CFF, #A45CFF, #C07CFF);
 }
 

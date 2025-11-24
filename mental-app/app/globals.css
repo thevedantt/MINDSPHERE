@@ -59,6 +59,11 @@
   --color-danger-50: var(--danger-50);
   --color-danger-500: var(--danger-500);
   --color-danger-600: var(--danger-600);
+  
+  /* Violet Gradient Colors */
+  --color-violet-500: var(--violet-500);
+  --color-violet-600: var(--violet-600);
+  --color-violet-700: var(--violet-700);
 }
 
 body {
